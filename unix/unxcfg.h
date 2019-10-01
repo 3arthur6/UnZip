@@ -14,24 +14,13 @@
 #define __unxcfg_h
 
 
-/* LARGE FILE SUPPORT - 10/6/04 EG */
-/* This needs to be set before the includes so they set the right sizes */
+/* Set LARGE FILE SUPPORT */
 
-#if (defined(NO_LARGE_FILE_SUPPORT) && defined(LARGE_FILE_SUPPORT))
-#  undef LARGE_FILE_SUPPORT
-#endif
+#define LARGE_FILE_SUPPORT
 
-/* Automatically set ZIP64_SUPPORT if LFS */
-#ifdef LARGE_FILE_SUPPORT
-# if (!defined(NO_ZIP64_SUPPORT) && !defined(ZIP64_SUPPORT))
-#   define ZIP64_SUPPORT
-# endif
-#endif
+/* Set ZIP64_SUPPORT */
 
-/* NO_ZIP64_SUPPORT takes preceedence over ZIP64_SUPPORT */
-#if defined(NO_ZIP64_SUPPORT) && defined(ZIP64_SUPPORT)
-#  undef ZIP64_SUPPORT
-#endif
+#define ZIP64_SUPPORT
 
 #ifdef LARGE_FILE_SUPPORT
   /* 64-bit Large File Support */
