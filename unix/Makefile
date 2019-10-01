@@ -819,7 +819,7 @@ linux_asm:	linux
 # Linux (Posix, approximately SysV):  virtually any version since before 0.96,
 # for any platform.  Change "-O" to "-O3" or whatever, as desired...
 linux_noasm:	unix_make
-	$(MAKE) unzips CC=gcc LD=gcc CFLAGS="-O -Wall"
+	$(MAKE) unzips CC=~/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android28-clang LD=~/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android28-clang CFLAGS="-O -Wall -DNO_LCHMOD"
 
 # Linux with lcc compiler:  __inline__ (stat.h) not recognized, and must edit
 # /usr/include/gnu/types.h to get rid of "long long" if __LCC__ defined.  -O3
