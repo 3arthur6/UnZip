@@ -175,7 +175,8 @@ static ZCONST char Far IgnoreOOptionMsg[] =
    static ZCONST char Far Example2[] = ""; /* not needed */
 #else /* !MACOS */
    static ZCONST char Far Example2[] = " \
- unzip -p foo | more  => send contents of foo.zip via pipe into program more\n";
+ unzip -p foo | more\n\
+   => send content of foo.zip via pipe into program more\n";
 #endif /* ?MACOS */
 #endif /* ?OS2 */
 #endif /* ?RISCOS */
@@ -184,7 +185,7 @@ static ZCONST char Far IgnoreOOptionMsg[] =
 /* local1[]:  command options */
 #if defined(TIMESTAMP)
    static ZCONST char Far local1[] =
-     "  -T  timestamp archive to latest";
+     "-T  timestamp archive to latest";
 #else /* !TIMESTAMP */
    static ZCONST char Far local1[] = "";
 #endif /* ?TIMESTAMP */
@@ -255,10 +256,11 @@ M  pipe through \"more\" pager              -s  spaces in filenames => '_'\n\n";
 #endif
 #else /* !VMS */
 #ifdef ATH_BEO_UNX
-   static ZCONST char Far local2[] = " -X  restore UID/GID info";
+   static ZCONST char Far local2[] = "-X  restore UID/GID info";
 #ifdef MORE
    static ZCONST char Far local3[] = "\
-  -K  keep setuid/setgid/tacky permissions   -M  pipe through \"more\" pager\n";
+  -K  keep setuid/setgid/tacky permissions\n\
+  -M  pipe through \"more\" pager\n\n";
 #else
    static ZCONST char Far local3[] = "\
   -K  keep setuid/setgid/tacky permissions\n";
@@ -313,28 +315,36 @@ M  pipe through \"more\" pager              -s  spaces in filenames => '_'\n\n";
 #endif
 
 static ZCONST char Far ZipInfoUsageLine1[] = "\
-ZipInfo %d.%d%d%s of %s, by Greg Roelofs and the Info-ZIP group.\n\
-\n\
-List name, date/time, attribute, size, compression method, etc., about files\n\
-in list (excluding those in xlist) contained in the specified .zip archive(s).\
-\n\"file[.zip]\" may be a wildcard name containing %s.\n\n\
-   usage:  zipinfo [-12smlvChMtTz] file[.zip] [list...] [-x xlist...]\n\
-      or:  unzip %s-Z%s [-12smlvChMtTz] file[.zip] [list...] [-x xlist...]\n";
+ZipInfo %d.%d%d%s of %s,\n\
+by Greg Roelofs and the Info-ZIP group.\n\n\
+ -List name, date/time, attribute, size, compression\n\
+  method, etc., about files in list (excluding those\n\
+  in xlist) contained in the specified .zip archive(s).\n\
+ -File[.zip] may be a wildcard name containing :\n\
+  %s.\n\n\
+  usage: unzip %s-Z%s [-12smlvChMtTz] file[.zip] [list...]\n\
+               [-x xlist...]\n";
 
 static ZCONST char Far ZipInfoUsageLine2[] = "\nmain\
- listing-format options:             -s  short Unix \"ls -l\" format (def.)\n\
-  -1  filenames ONLY, one per line       -m  medium Unix \"ls -l\" format\n\
-  -2  just filenames but allow -h/-t/-z  -l  long Unix \"ls -l\" format\n\
-                                         -v  verbose, multi-page format\n";
+ listing-format options:\n\
+  -s  short Unix \"ls -l\" format (def.)\n\
+  -1  filenames ONLY, one per line\n\
+  -m  medium Unix \"ls -l\" format\n\
+  -2  just filenames but allow -h/-t/-z\n\
+  -l  long Unix \"ls -l\" format\n\
+  -v  verbose, multi-page format\n\n";
 
 static ZCONST char Far ZipInfoUsageLine3[] = "miscellaneous options:\n\
-  -h  print header line       -t  print totals for listed files or for all\n\
-  -z  print zipfile comment   -T  print file times in sortable decimal format\
-\n  -C  be case-insensitive   %s\
-  -x  exclude filenames that follow from listing\n";
+  -h  print header line\n\
+  -t  print totals for listed files or for all\n\
+  -z  print zipfile comment\n\
+  -T  print file times in sortable decimal format\n\
+  -C  be case-insensitive\n\
+  %s\
+  -x  exclude filenames that follow from listing\n\n";
 #ifdef MORE
    static ZCONST char Far ZipInfoUsageLine4[] =
-     "  -M  page output through built-in \"more\"\n";
+     "-M  page output through built-in \"more\"\n";
 #else /* !MORE */
    static ZCONST char Far ZipInfoUsageLine4[] = "";
 #endif /* ?MORE */
@@ -570,9 +580,9 @@ Send bug reports using //www.info-zip.org/zip-bug.html; see README for details.\
 #else /* !VMS */
 # ifdef COPYRIGHT_CLEAN
    static ZCONST char Far UnzipUsageLine1[] = "\
-UnZip %d.%d%d%s of %s, by Info-ZIP.  Maintained by C. Spieler.  Send\n\
-bug reports using http://www.info-zip.org/zip-bug.html; see README for details.\
-\n\n";
+UnZip %d.%d%d%s of %s, by Info-ZIP.\n\
+Maintained by C. Spieler.\n\
+Send bug reports : http://www.info-zip.org/zip-bug.html\n\n";
 # else
    static ZCONST char Far UnzipUsageLine1[] = "\
 UnZip %d.%d%d%s of %s, by Info-ZIP.  UnReduce (c) 1989 by S. H. Smith.\n\
@@ -600,9 +610,12 @@ Usage: unzip %s[-opts[modifiers]] file[.zip] [list] [-x xlist] [-d fm]\n \
 \n  file[.zip] may be a wildcard.  %s\n";
 #else /* !VM_CMS */
 static ZCONST char Far UnzipUsageLine2[] = "\
-Usage: unzip %s[-opts[modifiers]] file[.zip] [list] [-x xlist] [-d exdir]\n \
- Default action is to extract files in list, except those in xlist, to exdir;\n\
-  file[.zip] may be a wildcard.  %s\n";
+Usage: unzip %s[-opts[modifiers]] file[.zip] [list]\n\
+             [-x xlist] [-d exdir]\n\
+ -Default action is to extract files in list, except\n\
+  those in xlist, to exdir;\n\
+ -File[.zip] may be a wildcard.\n\
+ %s\n";
 #endif /* ?VM_CMS */
 #endif /* ?MACOS */
 
@@ -613,7 +626,7 @@ Usage: unzip %s[-opts[modifiers]] file[.zip] [list] [-x xlist] [-d exdir]\n \
 #else
 #  define ZIPINFO_MODE_OPTION  "[-Z] "
    static ZCONST char Far ZipInfoMode[] =
-     "-Z => ZipInfo mode (\"unzip -Z\" for usage).";
+     "-ZipInfo mode (\"unzip -Z\" for usage).";
 #endif /* ?NO_ZIPINFO */
 
 #ifdef VMS
@@ -638,11 +651,16 @@ static ZCONST char Far UnzipUsageLine3[] = "\n\
   -x  exclude files that follow (in xlist)   -d  extract files onto disk fm\n";
 #else /* !VM_CMS */
 static ZCONST char Far UnzipUsageLine3[] = "\n\
-  -p  extract files to pipe, no messages     -l  list files (short format)\n\
-  -f  freshen existing files, create none    -t  test compressed archive data\n\
-  -u  update files, create if necessary      -z  display archive comment only\n\
-  -v  list verbosely/show version info     %s\n\
-  -x  exclude files that follow (in xlist)   -d  extract files into exdir\n";
+  -p  extract files to pipe, no messages\n\
+  -l  list files (short format)\n\
+  -f  freshen existing files, create none\n\
+  -t  test compressed archive data\n\
+  -u  update files, create if necessary\n\
+  -z  display archive comment only\n\
+  -v  list verbosely/show version info\n\
+  %s\n\
+  -x  exclude files that follow (in xlist)\n\
+  -d  extract files into exdir\n\n";
 #endif /* ?VM_CMS */
 #endif /* ?MACOS */
 
@@ -688,19 +706,26 @@ lowercase\n %-42s  -V  retain VMS version numbers\n%s";
 #else /* !VMS */
 static ZCONST char Far UnzipUsageLine4[] = "\
 modifiers:\n\
-  -n  never overwrite existing files         -q  quiet mode (-qq => quieter)\n\
-  -o  overwrite files WITHOUT prompting      -a  auto-convert any text files\n\
-  -j  junk paths (do not make directories)   -aa treat ALL files as text\n\
-  -C  match filenames case-insensitively     -L  make (some) names \
-lowercase\n %-42s  -V  retain VMS version numbers\n%s";
+  -n  never overwrite existing files\n\
+  -q  quiet mode (-qq => quieter)\n\
+  -o  overwrite files WITHOUT prompting\n\
+  -a  auto-convert any text files\n\
+  -j  junk paths (do not make directories)\n\
+  -aa treat ALL files as text\n\
+  -C  match filenames case-insensitively\n\
+  -L  make (some) names lowercase\n\
+  %-42s\n\
+  -V  retain VMS version numbers\n%s";
 #endif /* ?VMS */
 #endif /* ?UNICODE_SUPPORT */
 
 static ZCONST char Far UnzipUsageLine5[] = "\
-See \"unzip -hh\" or unzip.txt for more help.  Examples:\n\
-  unzip data1 -x joe   => extract all files except joe from zipfile data1.zip\n\
+See \"unzip -hh\" for more help.  Examples:\n\
+  unzip data1 -x joe\n\
+   => extract all files except joe from zip data1.zip\n\
 %s\
-  unzip -fo foo %-6s => quietly replace existing %s if archive file newer\n";
+  unzip -fo foo %-6s\n\
+   => quietly replace %s if archive file is newer\n\n";
 #endif /* ?SFX */
 
 
